@@ -20,3 +20,11 @@ const ini = async () => {
   }
 };
 ini();
+
+app.get("/books/", async (request, response) => {
+  const getBooks = `
+        SELECT * FORM book ORDER BY book_id;
+    `;
+  const ges = await db.all(getBooks);
+  response.send(ges);
+});
